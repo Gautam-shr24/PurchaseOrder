@@ -29,22 +29,6 @@ public class BuyerDaoImpl implements BuyerDao {
 	}
 
 
-	public Buyer validateBuyer(String email, String pass) {
-		
-		try {
-
-			Session session=sessionFactory.getCurrentSession();
-			Buyer buyerObj=session.get(Buyer.class, email);			
-			if( buyerObj!=null){
-				if( buyerObj.getPassword().equals(pass)){
-					return  buyerObj;
-				}
-			}
-			}
-			catch(Exception e){
-				e.printStackTrace();
-			}
-			return null;		
-	}
+	
 
 }

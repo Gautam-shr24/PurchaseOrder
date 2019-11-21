@@ -7,7 +7,9 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.project.dao.BuyerDao;
+import com.project.dao.LoginDao;
 import com.project.model.Buyer;
+import com.project.model.Login;
 import com.project.services.BuyerService;
 
 
@@ -17,20 +19,33 @@ public class BuyerServiceImpl implements BuyerService {
 	
 	@Autowired
 	BuyerDao buyerDao;
+	
+	@Autowired
+	LoginDao loginDao;
+	
 
 	public boolean addBuyer(Buyer bObj) {
-		bObj.setRole_id(1);
 		bObj.setCreated_date(LocalDate.now());
 		bObj.setCreated_by("System");
 		bObj.setIs_active("Y");
-  		return buyerDao.addBuyer(bObj);  //method call to BuyerDaoImpl
+		
+		
+  		boolean b=buyerDao.addBuyer(bObj);  //method call to BuyerDaoImpl
+  		if(b) {
+  			Login obj=new Login();
+  			obj.setEmail(bObj.getEmailId());
+  			obj.setPassword(bObj.getPassword());
+  			obj.setRole("Buyer");
+  			loginDao.add(obj);
+  			return true;
+  		}
+  		else {
+  			return false;
+  		}
 		
 	}
 
-	public Buyer validateBuyer(String email, String password) {
-		Buyer buObj = buyerDao.validateBuyer(email, password);
-		return buObj;
-	}
+	
 
 	
 

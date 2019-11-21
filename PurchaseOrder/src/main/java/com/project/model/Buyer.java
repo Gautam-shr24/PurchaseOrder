@@ -10,38 +10,34 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
+import javax.persistence.Transient;
 
 
 
 @Entity
-@Table(name="Buyer_Detail")
+@Table(name="BuyerDetail")
 public class Buyer {
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
-	@Column(name="Buyer_Id")
+	@Column(name="User_Id")
 	private int  buyerId;
 	
-	@Column(name="Buyer_name")
+	@Column(name="User_Name")
 	private String buyerName;
 	
-	@Column(name="Buyer_Address")
-	private String buyerAddress;
-	
-	@Column(name="Phone_No")
-	private Integer phone_no;
-	
-	@Column(name="Email_Id")
+	@Column(name="Email")
 	private String emailId;
 	
-	@Column(name="Is_Active")
+		
+	@Column(name="Address")
+	private String buyerAddress;
+	
+	@Column(name="Mobile_no")
+	private long phone_no;
+
+	@Column(name="IsActive")
 	private String is_active;
-	
-	@Column(name="Buyer_Password")
-	private String password;
-	
-	@Column(name="Role_Id")
-	private int role_id;
 	
 	@Column(name="Created_Date")
 	private LocalDate created_date;
@@ -54,6 +50,12 @@ public class Buyer {
 	
 	@Column(name="Updated_By")
 	private String updated_by;
+	
+	@Column(name="password")
+	@Transient
+	private String password;
+	
+	
 	
 	public int getBuyerId() {
 		return buyerId;
@@ -79,11 +81,11 @@ public class Buyer {
 		this.buyerAddress = buyerAddress;
 	}
 	
-	public Integer getPhone_no() {
+	public long getPhone_no() {
 		return phone_no;
 	}
 	
-	public void setPhone_no(Integer phone_no) {
+	public void setPhone_no(long phone_no) {
 		this.phone_no = phone_no;
 	}
 	
@@ -96,21 +98,8 @@ public class Buyer {
 	}
 	
 	
-	public String getPassword() {
-		return password;
-	}
 	
-	public void setPassword(String password) {
-		this.password = password;
-	}
-	public int getRole_id() {
-		return role_id;
-	}
-	
-	public void setRole_id(int role_id) {
-		this.role_id = role_id;
-	}
-	
+
 	public LocalDate getCreated_date() {
 		return created_date;
 	}
@@ -149,6 +138,14 @@ public class Buyer {
 	
 	public void setIs_active(String is_active) {
 		this.is_active = is_active;
+	}
+
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
 	}
 	
 	
