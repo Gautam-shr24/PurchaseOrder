@@ -10,14 +10,13 @@ import org.junit.Test;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 import com.project.config.DBConfig;
-import com.project.model.Buyer;
-import com.project.services.BuyerService;
-import com.project.services.LoginService;
+import com.project.model.User;
+import com.project.service.UserService;
 
 public class TestClass {
 
-	private static BuyerService buyerService;
-	private static LoginService loginService;
+	private static UserService buyerService;
+	
 	
 	
 	
@@ -26,8 +25,8 @@ public class TestClass {
 		
 		try {
 		AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(DBConfig.class);
-		buyerService = context.getBean(BuyerService.class,"buyerService");
-		loginService = context.getBean(LoginService.class,"loginService");
+		buyerService = context.getBean(UserService.class,"buyerService");
+		
 		}
 		catch(Exception e) {
 			e.printStackTrace();
@@ -36,21 +35,18 @@ public class TestClass {
 	}
 	
 	@Test
-	@Ignore
-	public void addBuyerTest()
+
+	public void addUserTest()
 	{
-		Buyer bObj = new Buyer();
-		bObj.setBuyerName("Karnika");
-		bObj.setBuyerAddress("Delhi");
-		bObj.setEmailId("k@gmail.com");
-		bObj.setCreated_by("System");
-		bObj.setCreated_date(LocalDate.now());
-		bObj.setPhone_no(3456789012l);
-		bObj.setIs_active("Y");
-		bObj.setPassword("k123");
+		User uObj = new User();
+		uObj.setUserName("Dhairya");
+		uObj.setUserAddress("Saharanpur");
+		uObj.setUserEmail("d@gmail.com");
+		uObj.setUserPhone(3456789012l);
+		uObj.setUserPass("k123");
 	
 		
-		boolean b = buyerService.addBuyer(bObj);
+		boolean b = buyerService.addUser(uObj);
 		
 		assertTrue("Problem in adding product",b);
 	}

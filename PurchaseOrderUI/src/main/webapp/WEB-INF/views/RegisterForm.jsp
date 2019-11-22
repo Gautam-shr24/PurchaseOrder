@@ -16,39 +16,36 @@
 <div align = "center">
 <h1>Register Yourself!!!!!</h1>
 
-<form:form  action="register" method="post" modelAttribute="buyerObj">
+<form:form  action="register" method="post" modelAttribute="userObj">
 
 		<table>
 
-			<%-- <tr>
-			<th>Id</th>
-			<td><form:input path="buyerId" id="name"/></td>
-			</tr> --%>
+			
 			
 			<tr>
 			<th>Name</th>
-			<td><form:input path="buyerName" id="name"/></td>
+			<td><form:input path="userName" id="name"/></td>
 			</tr>
 			
 			
 			<tr>
 			<th>Address</th>
-			<td><form:input path="buyerAddress" id="address"/></td>
+			<td><form:input path="userAddress" id="address"/></td>
 			</tr>
 			
 			<tr>
 			<th>Phone_No</th>
-			<td><form:input path="phone_no" id="phone"/></td>
+			<td><form:input path="userPhone" id="phone"/></td>
 			</tr>
 			
 			<tr>
 			<th>Email</th>
-			<td><form:input path="emailId" id="address"/></td>
+			<td><form:input path="userEmail" id="address"/></td>
 			</tr>
 			
 			<tr>
 			<th>Password</th>
-			<td><form:input path="password" id="password"/></td>
+			<td><form:input path="userPass" id="password"/></td>
 			</tr>
 			
 			
