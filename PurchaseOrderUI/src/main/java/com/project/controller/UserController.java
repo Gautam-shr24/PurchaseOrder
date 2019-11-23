@@ -82,12 +82,14 @@ public class UserController {
 	public String validateUser(@RequestParam String email ,@RequestParam String pass)
 	{
 		User uObj = userService.validateUser(email, pass);
-		session.setAttribute("uObj",uObj);
+		
 		if(uObj==null)
 		{
 			return "RegisterForm";
 		}
 		else {
+			
+			session.setAttribute("uObj",uObj);
 			if(uObj.getRole().equals("Buyer"))
 			{
 			

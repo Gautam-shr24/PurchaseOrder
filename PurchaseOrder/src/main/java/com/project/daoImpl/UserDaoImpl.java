@@ -39,17 +39,12 @@ public class UserDaoImpl implements UserDao {
 			query.setParameter("password",password);
 			
 			List<User> list = query.list();
-			if(list.size()==0)
-			{
-				session.close();
-			}
-			else
-			{
+			
 				if(list.size()!=0)
 				{
 					return list.get(0);
 				}
-			}}
+			}
 			catch(Exception e)
 			{
 				e.printStackTrace();

@@ -2,10 +2,8 @@ package com.project.test;
 
 import static org.junit.Assert.assertTrue;
 
-import java.time.LocalDate;
 
 import org.junit.BeforeClass;
-import org.junit.Ignore;
 import org.junit.Test;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
