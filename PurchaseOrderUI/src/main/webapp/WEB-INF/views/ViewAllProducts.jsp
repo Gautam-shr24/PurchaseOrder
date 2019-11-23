@@ -37,9 +37,9 @@
 				<c:forEach items="${productDetails}" var="obj">
 				<tr>
 					<td>
-						${obj.productName}
+						${obj.productDesc}
 					</td>
-					<td>${obj.productDesc}</td>
+					<td>${obj.productName}</td>
 					<td>${obj.productPrice}</td>
 					
 </tr>

@@ -23,7 +23,7 @@ public class POController {
 		return "PurchaseOrder";
 	}*/
 	
-	//fetch details from database 
+	//fetch details from database in drop down menu
 	@RequestMapping(value = "/getPurchaseOrderForm", method = RequestMethod.GET)
 	public String getPOForm(ModelMap map) {
 		

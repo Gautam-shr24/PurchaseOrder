@@ -55,29 +55,7 @@ public class UserController {
 	
 	@Autowired
 	HttpSession session;
-	
-	
-	
-	/*@RequestMapping(value="/logIn", method =RequestMethod.POST)
-	public String validateUser(@RequestParam String email,@RequestParam String pass)
-	{
-		String role = loginService.validateUser(email,pass);
-		// is_active+role+creadentials match
-		//if(role.equals("Buyer") && is_active.equals("Y"))
-			{
-			
-			return "BuyerPage";
-			}
-		else ifif(role.equals("seller") && is_active.equals("Y")){
-			return "seller"
-		}
-			else {
-				
-				return "vendor";
-			}return null;
-		}
-	*/
-	
+
 	@RequestMapping(value="/logIn", method =RequestMethod.POST)
 	public String validateUser(@RequestParam String email ,@RequestParam String pass)
 	{
@@ -89,7 +67,7 @@ public class UserController {
 		}
 		else {
 			
-			session.setAttribute("uObj",uObj);
+			session.setAttribute("uObj",uObj);    //create session
 			if(uObj.getRole().equals("Buyer"))
 			{
 			
