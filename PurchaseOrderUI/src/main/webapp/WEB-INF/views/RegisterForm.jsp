@@ -1,15 +1,20 @@
- <%@taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+
+<%@taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 
 <html>
 <head>
 <title>Register Page</title>
 
 
-<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
-<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<link
+	href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css"
+	rel="stylesheet" id="bootstrap-css">
+<script
+	src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+<script
+	src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
-   <link href="${css}/style.css" rel="stylesheet">
+<link href="${css}/style.css" rel="stylesheet">
 
 <!-- <style type="text/css">
 body {
@@ -20,78 +25,86 @@ body {
 }
 </style> -->
 
+<style>
+error {
+	color: red;
+	font-size: 15px;
+}
+</style>
 </head>
 <body>
 
-<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
-  <ul class="navbar-nav">
-   <li class="nav-item active">
-      <a class="nav-link" href="">Purchase Order</a>
-    </li>
-    <li class="nav-item active">
-      <a class="nav-link" href="">Home</a>
-    </li>
-    <li class="nav-item active">
-      <a class="nav-link" href="getRegisterForm">Register</a>
-    </li>
-    <li class="nav-item active">
-      <a class="nav-link" href="getLoginForm">LogIn</a>
-    </li>
-    
-    
-   
-  </ul>
-</nav>
+	<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+		<ul class="navbar-nav">
+			<li class="nav-item active"><a class="nav-link" href="">Purchase
+					Order</a></li>
+			<li class="nav-item active"><a class="nav-link" href="">Home</a>
+			</li>
+			<li class="nav-item active"><a class="nav-link"
+				href="getRegisterForm">Register</a></li>
+			<li class="nav-item active"><a class="nav-link"
+				href="getLoginForm">LogIn</a></li>
 
-    <div id="login" >
-        <h3 class="text-center text-white pt-5">Register Form</h3>
-        <div class="container">
-            <div id="login-row" class="row justify-content-center align-items-center">
-                <div id="login-column" class="col-md-6">
-                    <div id="login-box" class="col-md-12">
-                        <form:form id="login-form" class="form"  action="register" method="post" modelAttribute="userObj" >
-                         <form:errors path = "*" cssClass = "errorblock" element = "div" />
-                        <fieldset >
-                            <h3 class="text-center text-info">Register </h3>
-                             <div class="form-group">
-                                <label for="username" class="text-info">Name :</label><br>
-                                <form:input path="userName" id="name" class="form-control"/>
-                                <form:errors path="userName" cssClass = "error" /> 
-                            </div>
-                             <div class="form-group">
-                                <label for="address" class="text-info">Address :</label><br>
-                                <form:input path="userAddress" id="address" class="form-control"/>
-                                <form:errors path="userAddress" cssClass = "error" />
-                            </div>
-                            
-                            <div class="form-group">
-                                <label for="email" class="text-info" >Email Id</label><br>
-								<form:input path="userEmail" id="email" class="form-control"/> 
-								<form:errors path="userEmail" cssClass = "error" />                           
-							</div>
-							<div class="form-group">
-                                <label for="email" class="text-info" >Contact Number :</label><br>
-								<form:input path="userPhone" id="email" class="form-control"/> 
-								<form:errors path="userPhone" cssClass = "error" />                           
-							</div>
-							
-                            <div class="form-group">
-                                <label for="password" class="text-info">Password</label><br>
-                                <input type="password" name="userPass" id="password" class="form-control" path="userPass">
-                                <form:errors path="userPass" cssClass = "error" />
-                            </div>
-                            <div class="form-group">
-<!--                                 <label for="remember-me" class="text-info"><span>Remember Me</span> <span><input id="remember-me" name="remember-me" type="checkbox"></span></label><br>
- -->                                <input type="submit" name="submit" class="btn btn-info btn-md" value="Register">
-                            </div>
-                           
-                            </fieldset>
-                        </form:form>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+
+
+		</ul>
+	</nav>
+	<form:errors path="*" />
+	<div id="login">
+		<h3 class="text-center text-white pt-5">Register Form</h3>
+		<div class="container">
+			<div id="login-row"
+				class="row justify-content-center align-items-center">
+				<div id="login-column" class="col-md-6">
+					<div id="login-box" class="col-md-12">
+						<form:form id="login-form" class="form" action="register"
+							method="post" modelAttribute="userObj">
+							<%--   <form:errors path = "*" cssClass = "errorblock" element = "div" /> --%>
+							<fieldset>
+								<h3 class="text-center text-info">Register</h3>
+								<div class="form-group">
+									<label for="username" class="text-info">Name :</label><br>
+									<form:input path="userName" id="name" class="form-control" />
+									<form:errors path="userName" cssClass="error" />
+								</div>
+								<div class="form-group">
+									<label for="address" class="text-info">Address :</label><br>
+									<form:input path="userAddress" id="address"
+										class="form-control" />
+									<form:errors path="userAddress" cssClass="error" />
+								</div>
+
+								<div class="form-group">
+									<label for="email" class="text-info">Email Id</label><br>
+									<form:input path="userEmail" id="email" class="form-control" />
+									<form:errors path="userEmail" cssClass="error" />
+								</div>
+								<div class="form-group">
+									<label for="email" class="text-info">Contact Number :</label><br>
+									<form:input path="userPhone" id="email" class="form-control" />
+									<form:errors path="userPhone" cssClass="error" />
+								</div>
+
+								<div class="form-group">
+									<label for="password" class="text-info">Password</label><br>
+									<input type="password" name="userPass" id="password"
+										class="form-control" path="userPass">
+									<form:errors path="userPass" cssClass="error" />
+								</div>
+								<div class="form-group">
+									<!--                                 <label for="remember-me" class="text-info"><span>Remember Me</span> <span><input id="remember-me" name="remember-me" type="checkbox"></span></label><br>
+ -->
+									<input type="submit" name="submit" class="btn btn-info btn-md"
+										value="Register">
+								</div>
+
+							</fieldset>
+						</form:form>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
 </body>
 </html>
 

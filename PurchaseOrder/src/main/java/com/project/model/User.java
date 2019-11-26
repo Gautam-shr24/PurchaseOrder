@@ -23,9 +23,11 @@ public class User {
 
 
 	@Id
+	@NotNull
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	@Column(name="User_Id")
 	private int  userId;
+	
 	
 	@Column(name="User_Name")
 	@Pattern(regexp="[^0-9]*", message="Enter valid name")
@@ -34,7 +36,7 @@ public class User {
 	
 	@Column(name="User_Email")
 	@NotNull
-	@Email
+	@Email(message="email is not valid")
 	private String userEmail;
 			
 	@Column(name="User_Address")

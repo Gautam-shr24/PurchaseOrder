@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.project.dao.POItemsDao;
 import com.project.dao.ProductDao;
 import com.project.dao.PurchaseOrderDao;
 import com.project.dao.UserDao;
@@ -58,7 +59,8 @@ public class POController {
 	@Autowired
 	PurchaseOrderDao poDao;
 	
-	
+	@Autowired
+	POItemsDao poItemDao;
 	
 	@ResponseBody
 	@RequestMapping(value="/purchaseOrder",method=RequestMethod.POST)
@@ -115,6 +117,24 @@ public class POController {
 		return "ViewPOtoseller";
 		
 	}
+	
+/*	@RequestMapping(value = "/viewlineitems", method = RequestMethod.GET)
+	public String viewAllLineItems(ModelMap map) {
+		
+		
+		return "ViewLineItems";
+
+	}*/
+	
+	@RequestMapping(value = "/viewlineitems", method = RequestMethod.GET)
+	public String viewLineItems(@RequestParam int viewId,ModelMap map) {
+	
+		List<POItems> itemsList = poItemDao.getLineItemsById(viewId);
+		map.addAttribute("itemsList",  itemsList);
+		System.out.println( itemsList);
+		session.setAttribute(" itemsList",  itemsList);
+		return "ViewLineItems";
+	}	
 	
 	
 	

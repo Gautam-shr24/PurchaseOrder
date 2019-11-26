@@ -2,6 +2,7 @@ package com.project.model;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
@@ -21,14 +22,14 @@ public class POItems {
 	@GeneratedValue
 	private int purchaseOrderItemId;
 	
-	@OneToOne
+	@OneToOne(cascade=CascadeType.ALL,fetch=FetchType.EAGER)
 	@JoinColumn(name="productId")
 	private Product productObj;
 	
 	private int quantity;
 	
 	
-	@ManyToOne(cascade=CascadeType.ALL)
+	@ManyToOne(cascade=CascadeType.ALL,fetch=FetchType.EAGER)
 	@JoinColumn(name="purchaseOrderId")
 	private PurchaseOrder purchaseOrderObj;
 	

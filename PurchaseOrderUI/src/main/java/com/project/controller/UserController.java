@@ -36,7 +36,7 @@ public class UserController {
 //=======register the buyer=========
 	
 	@RequestMapping(value="/register",method=RequestMethod.POST)
-	public String addRegister(@Valid @ModelAttribute User userObj ,BindingResult result )
+	public String addRegister(@Valid @ModelAttribute("userObj") User userObj ,BindingResult result )
 	{
 		if(result.hasErrors()) {
 			return "RegisterForm" ;

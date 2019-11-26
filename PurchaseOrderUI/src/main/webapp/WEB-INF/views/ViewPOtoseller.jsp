@@ -15,15 +15,7 @@
    <link href="${css}/style.css" rel="stylesheet">
    
    
-			<script>
-					$(document).ready(function(){
-				  		$("button").click(function(){
-				   		$(".ListItems").toggle();
-					  });
-					});
 			
-			
-			</script>
 </head>
 <body>
 <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
@@ -48,7 +40,7 @@
 <h1>Welcome Seller!!!</h1>
 
 <div align="center">
-	${msg }
+<form>
 	<table border=1>
 		<tr>
 
@@ -67,35 +59,42 @@
 				<td>${obj.sellerObj.userId}</td>
 				<td>${obj.status }</td>
 				
-			<td><button>View List Items</button></td>
+		<td><a href="viewlineitems?viewId=${obj.purchaseOrderId}" class="btn btn-primary btn-block btn-large">View</a></td> 
 			</tr>
 		
 		</c:forEach>
 		</table>
+		</form>
 		</div>
 </div>
 	
-	<div align="center" class="ListItems">
+<%-- 	<div align="center" class="ListItems">
 		${msg }
 		<table border=1>
 			<tr>
 	
-			<th>Name </th>				
-			<th>Email </th>
-			<th>Address </th>
-			<th>Phone no</th>
+			<th>Buyer Id </th>				
+			<th>Product items Detail </th>
+			<th>Quantity </th>
 			
 			</tr>
 			
 			<c:forEach items="${list }" var="obj">
 			<tr>
 					
-					<td>${obj.buyerObj.userName}</td>
-					<td>${obj.buyerObj.userId}</td>
-					<td>${obj.sellerObj.userId}</td>
-					<td>${obj.status }</td>
-					
-				<td><button>View List Items</button></td>
+				<td>${obj.buyerObj.userId}</td>	
+				<td><c:forEach items="${obj.poItemsObj }" var="listItems">
+				${listItem.productObj.productName },
+				
+				</c:forEach>				
+				</td>
+				
+				<td><c:forEach items="${obj.poItemsObj }" var="listItems">
+				${listItem.quantity}
+				
+				</c:forEach>				
+				</td>
+				
 				</tr>
 			
 			</c:forEach>
@@ -103,7 +102,7 @@
 			</div>
 	</div>
 
-
+ --%>
 
 </body>
 </html>

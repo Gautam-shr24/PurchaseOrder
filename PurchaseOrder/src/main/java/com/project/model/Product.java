@@ -29,10 +29,6 @@ public class Product {
 	@Column(name="product_price")
 	private double productPrice;
 	
-	
-	
-	
-	
 	public int getProductId() {
 		return productId;
 	}
