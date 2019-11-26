@@ -4,6 +4,7 @@ import static org.junit.Assert.assertTrue;
 
 
 import org.junit.BeforeClass;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
@@ -33,11 +34,11 @@ public class TestClass {
 	}
 	
 	@Test
-
+	@Ignore
 	public void addUserTest()
 	{
 		User uObj = new User();
-		uObj.setUserName("Dhairya");
+		uObj.setUserName("Divya");
 		uObj.setUserAddress("Saharanpur");
 		uObj.setUserEmail("d@gmail.com");
 		uObj.setUserPhone(3456789012l);

@@ -1,6 +1,7 @@
 package com.project.test;
 
 import org.junit.BeforeClass;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
@@ -26,11 +27,12 @@ public class ProductTest {
 	}
 	
 	@Test
+	@Ignore
 	public void addProductTest(){
 		Product p=new Product();
-		p.setProductName("Realme X2 Pro");
-		p.setProductDes("Realme Flagship phones");
-		p.setProductPrice(30000);		
+		p.setProductName("Realme  Pro");
+		p.setProductDes("Realme phones");
+		p.setProductPrice(20000);		
 	
 		boolean r=productDaoObj.addProduct(p);
 		assertTrue("Problem in Adding User", r);

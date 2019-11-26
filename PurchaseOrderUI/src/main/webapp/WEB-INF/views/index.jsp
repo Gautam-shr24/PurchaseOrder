@@ -24,11 +24,7 @@
    <link href="${css}/style.css" rel="stylesheet">
 
 
- <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
- -->  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
-	
- 
+
 </head>
 <body style="background:url('${images}/img.jpg');">
 <%-- <img src="${images}/img.jpg"/> --%>
@@ -41,12 +37,7 @@
 	<header id="header">
     <div class="container">
 
-      <!-- <div id="logo" class="pull-left">
-       <a href="#hero"></a> 
-        Uncomment below if you prefer to use a text logo
-        <h1><a href="#hero">Regna</a></h1>
-      </div>
- -->
+     
       <nav id="nav-menu-container">
         <ul class="nav-menu">
           <li class="menu-active"><a href="#hero">Home</a></li>

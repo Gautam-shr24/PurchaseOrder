@@ -33,10 +33,10 @@ public class ProductServiceImpl implements ProductService {
 		return productdao.deleteProduct(productObj);
 	}
 
-	public Product getProductByName(String productName) {
+	/*public Product getProductByName(String productName) {
 		
 		return productdao.getProductByName(productName);
-	}
+	}*/
 
 	public boolean updateProduct(Product productObj) {
 		

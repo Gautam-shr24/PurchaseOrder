@@ -79,7 +79,7 @@ public class ProductDaoImpl implements ProductDao {
 	    }
 
 	 
-	    public Product getProductByName(String productName) {
+	    /*public Product getProductByName(String productName) {
 	        try {
 	            Session session=sessionFactory.getCurrentSession();
 	            Product pro=session.get(Product.class,productName);
@@ -90,6 +90,19 @@ public class ProductDaoImpl implements ProductDao {
 	            }
 	        return null;
 	    }
+*/
+		public Product getProductById(int productId) {
+			
+			try {
+				Session session=sessionFactory.getCurrentSession();
+				Product product=session.get(Product.class,productId);
+				return product;
+				}
+				catch(Exception e){
+					e.printStackTrace(); 
+				}
+				return null;
+		}
 
 	}
 

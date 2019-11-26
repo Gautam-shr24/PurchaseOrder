@@ -1,11 +1,15 @@
 package com.project.model;
 
-import java.time.LocalDate;
+import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -14,57 +18,52 @@ public class PurchaseOrder {
 
 	@Id
 	@GeneratedValue
-	@Column(name="po_Id")
-	private int poId;
+	@Column(name="Po_id")
+	private int purchaseOrderId;
 	
-	@Column(name="PO_Name")
-    private String poName;
+	@ManyToOne
+	@JoinColumn(name="buyer_Id")
+	private User buyerObj;
 	
-	@Column(name="Product_Id")
-    private int productId;
-    
-	@Column(name="Buyer_Id")
-    private int buyerId;
+	@ManyToOne
+	@JoinColumn(name="seller_Id")
+	private User sellerObj;
+	
+	@OneToMany(mappedBy="purchaseOrderObj",cascade=CascadeType.ALL)
+	private List<POItems> poItemsObj;
 
-	@Column(name="Po_Status")
-    private String status;
-    
-	@Column(name="Created_Date")
-    private LocalDate createdDate;
+	private String status;
 
-	@Column(name="Quantity")
-    private int quantity;
-
-	public int getPoId() {
-		return poId;
+	public int getPurchaseOrderId() {
+		return purchaseOrderId;
 	}
 
-	public void setPoId(int poId) {
-		this.poId = poId;
+	public void setPurchaseOrderId(int purchaseOrderId) {
+		this.purchaseOrderId = purchaseOrderId;
 	}
 
-	public String getPoName() {
-		return poName;
+	public User getBuyerObj() {
+		return buyerObj;
 	}
 
-	public void setPoName(String poName) {
-		this.poName = poName;
+	public void setBuyerObj(User buyerObj) {
+		this.buyerObj = buyerObj;
 	}
 
-	public int getProductId() {
-		return productId;
+	public User getSellerObj() {
+		return sellerObj;
 	}
 
-	public void setProductId(int productId) {
-		this.productId = productId;
+	public void setSellerObj(User sellerObj) {
+		this.sellerObj = sellerObj;
 	}
 
-	public int getBuyerId() {
-		return buyerId;
+	public List<POItems> getPoItemsObj() {
+		return poItemsObj;
 	}
 
-	public void setBuyerId(int buyerId) {
-		this.buyerId = buyerId;
+	public void setPoItemsObj(List<POItems> poItemsObj) {
+		this.poItemsObj = poItemsObj;
 	}
 
 	public String getStatus() {
@@ -75,27 +74,13 @@ public class PurchaseOrder {
 		this.status = status;
 	}
 
-	public LocalDate getCreatedDate() {
-		return createdDate;
-	}
-
-	public void setCreatedDate(LocalDate createdDate) {
-		this.createdDate = createdDate;
-	}
-
-	public int getQuantity() {
-		return quantity;
-	}
-
-	public void setQuantity(int quantity) {
-		this.quantity = quantity;
-	}
-
 	@Override
 	public String toString() {
-		return "PurchaseOrder [poId=" + poId + ", poName=" + poName + ", productId=" + productId + ", buyerId="
-				+ buyerId + ", status=" + status + ", createdDate=" + createdDate + ", quantity=" + quantity + "]";
+		return "PurchaseOrder [purchaseOrderId=" + purchaseOrderId + ", buyerObj=" + buyerObj + ", sellerObj="
+				+ sellerObj + ", poItemsObj=" + poItemsObj + ", status=" + status + "]";
 	}
+
+
 
 	
 	

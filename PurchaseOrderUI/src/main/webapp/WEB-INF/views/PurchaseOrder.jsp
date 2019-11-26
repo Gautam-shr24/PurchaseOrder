@@ -8,7 +8,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Raise Purchse Order</title>
+<title>Raise Purchase Order</title>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet"
@@ -28,10 +28,7 @@
         $(".add-row").click(function(){
             var items = $(".name option:selected").val();
             var quantity = $("#quantity").val();
-            
-            
-            
-            
+              
             $.get("getProductNameById?productId="+items, function(data, status){
                 productObj=data;
                 
@@ -52,6 +49,48 @@
                 }
             });
         });
+        
+        var purchaseOrderList = [];
+        $("#purchaseOrder").click(function() {
+        	console.log('Hello 1');
+        	var table = $("table tbody");
+        	console.log('Hello 2');
+        	 
+        	table.find('tr').each(function (i, el) {
+        		 console.log('Hello 3');
+        	        var $tds = $(this).find('td'),
+        	        	
+        	            pId = $tds.eq(1).text(),
+        	            Quantity = $tds.eq(3).text();
+        	        
+        	        // do something with productId, product, Quantity
+        	        
+        	        
+        	        
+        	        var myObj = {
+        	        		  productId: pId,
+        	        		  quantity:Quantity
+        	        		  
+        	        		};
+        	        purchaseOrderList.push(myObj);
+        	    });
+        	console.log(purchaseOrderList);
+        	
+         
+        $.ajax({
+            type: "POST",
+            url: "/PurchaseOrderUI/purchaseOrder",
+            data: JSON.stringify(purchaseOrderList),
+            contentType: "application/json; charset=utf-8",
+            dataType: "json",
+            success: function(data){
+                console.log(data);
+           },
+            error: function(err) {
+                console.log(err); 
+            }
+        });
+	});
        
         
     });    
@@ -92,61 +131,17 @@
         </tbody>
   </table>
 			<div class="row">
-			<div class="col">	<button type="button" class="delete-row">Delete Row</button>
+			<div class="col">	
+			<button type="button" class="delete-row">Delete Row</button>
 			</div>		
-	<div class="col"><input type="button" value="submit"	class="btn btn-primary" id="raisePO"/></div>
+			<div class="col"><input type="submit" value="Raise PO" class="btn btn-primary" id="purchaseOrder"/></div>
 		</div>
 
 	
 	</form>
 	</div>
 	</body>
-	<script>
-		$(document).ready(function(){
-			 
-			var purchaseOrderList = [];
-	        $("#raisePO").click(function() {
-	        	console.log('Hello 1');
-	        	var table = $("table tbody");
-	        	console.log('Hello 2');
-	        	 
-	        	table.find('tr').each(function (i, el) {
-	        		 console.log('Hello 3');
-	        	        var $tds = $(this).find('td'),
-	        	        	
-	        	            pId = $tds.eq(1).text(),
-	        	            Quantity = $tds.eq(3).text();
-	        	        
-	        	        // do something with productId, product, Quantity
-	        	        
-	        	        
-	        	        
-	        	        var myObj = {
-	        	        		  productId: pId,
-	        	        		  quantity:Quantity
-	        	        		  
-	        	        		};
-	        	        purchaseOrderList.push(myObj);
-	        	    });
-	        	console.log(purchaseOrderList);
-	        	
-	         
-	        $.ajax({
-	            type: "POST",
-	            url: "raisePO",
-	            data: JSON.stringify(purchaseOrderList),
-	            contentType: "application/json; charset=utf-8",
-	            dataType: "json",
-	            success: function(data){
-	                console.log(data);
-	           },
-	            error: function(err) {
-	                console.log(err);
-	            }
-	        });
-		});
-		});
-	</script>
+	
 </html>
 
 

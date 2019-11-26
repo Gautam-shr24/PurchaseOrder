@@ -1,6 +1,7 @@
 package com.project.controller;
 
 import javax.servlet.http.HttpSession;
+import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -35,12 +36,16 @@ public class UserController {
 //=======register the buyer=========
 	
 	@RequestMapping(value="/register",method=RequestMethod.POST)
-	public String addRegister(@ModelAttribute User userObj ,BindingResult result )
+	public String addRegister(@Valid @ModelAttribute User userObj ,BindingResult result )
 	{
-		//if role
+		if(result.hasErrors()) {
+			return "RegisterForm" ;
+		}
+		else
+		{
 		userService.addUser(userObj);    //method call to service method 
 		return "success";
-	}
+	}}
 	
 //=======open login form=========
 	

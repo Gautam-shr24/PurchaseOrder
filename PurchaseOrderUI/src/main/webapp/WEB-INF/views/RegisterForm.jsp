@@ -29,33 +29,39 @@ body {
                 <div id="login-column" class="col-md-6">
                     <div id="login-box" class="col-md-12">
                         <form:form id="login-form" class="form"  action="register" method="post" modelAttribute="userObj" >
+                         <form:errors path = "*" cssClass = "errorblock" element = "div" />
                         <fieldset >
                             <h3 class="text-center text-info">Register </h3>
                              <div class="form-group">
                                 <label for="username" class="text-info">Name :</label><br>
-                                <form:input path="userName" id="name" class="form-control"/> 
+                                <form:input path="userName" id="name" class="form-control"/>
+                                <form:errors path="userName" cssClass = "error" /> 
                             </div>
                              <div class="form-group">
                                 <label for="address" class="text-info">Address :</label><br>
                                 <form:input path="userAddress" id="address" class="form-control"/>
+                                <form:errors path="userAddress" cssClass = "error" />
                             </div>
                             
                             <div class="form-group">
                                 <label for="email" class="text-info" >Email Id</label><br>
-								<form:input path="userEmail" id="email" class="form-control"/>                            
+								<form:input path="userEmail" id="email" class="form-control"/> 
+								<form:errors path="userEmail" cssClass = "error" />                           
 							</div>
 							<div class="form-group">
                                 <label for="email" class="text-info" >Contact Number :</label><br>
-								<form:input path="userPhone" id="email" class="form-control"/>                            
+								<form:input path="userPhone" id="email" class="form-control"/> 
+								<form:errors path="userPhone" cssClass = "error" />                           
 							</div>
 							
                             <div class="form-group">
                                 <label for="password" class="text-info">Password</label><br>
-                                <input type="password" name="userPass" id="password" class="form-control">
+                                <input type="password" name="userPass" id="password" class="form-control" path="userPass">
+                                <form:errors path="userPass" cssClass = "error" />
                             </div>
                             <div class="form-group">
-                                <label for="remember-me" class="text-info"><span>Remember Me</span> <span><input id="remember-me" name="remember-me" type="checkbox"></span></label><br>
-                                <input type="submit" name="submit" class="btn btn-info btn-md" value="Register">
+<!--                                 <label for="remember-me" class="text-info"><span>Remember Me</span> <span><input id="remember-me" name="remember-me" type="checkbox"></span></label><br>
+ -->                                <input type="submit" name="submit" class="btn btn-info btn-md" value="Register">
                             </div>
                            
                             </fieldset>

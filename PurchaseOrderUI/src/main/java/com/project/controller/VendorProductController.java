@@ -1,7 +1,5 @@
 package com.project.controller;
 
-import java.util.ArrayList;
-import java.util.List;
 
 import javax.servlet.http.HttpSession;
 
@@ -15,7 +13,6 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.project.dao.ProductDao;
 import com.project.dao.VendorProductDao;
-import com.project.model.Product;
 import com.project.model.User;
 import com.project.model.VendorProduct;
 

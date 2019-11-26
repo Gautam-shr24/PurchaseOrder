@@ -8,6 +8,12 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.validation.constraints.Max;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
+import javax.validation.constraints.Size;
+
+import org.hibernate.validator.constraints.Email;
 
 @Entity
 @Table(name="Table_User")
@@ -20,15 +26,22 @@ public class User {
 	private int  userId;
 	
 	@Column(name="User_Name")
+	@Pattern(regexp="[^0-9]*")
+	@NotNull
 	private String userName;
 	
 	@Column(name="User_Email")
+	@NotNull
+	@Email
 	private String userEmail;
 			
 	@Column(name="User_Address")
+	@NotNull
 	private String userAddress;
 	
 	@Column(name="User_Mobile")
+	@NotNull
+	@Max(10)
 	private long userPhone;
 
 	@Column(name="User_IsActive")

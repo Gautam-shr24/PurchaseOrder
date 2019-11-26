@@ -52,8 +52,31 @@ public class UserDaoImpl implements UserDao {
 			
 		return null;
 	}
-	}
 
+	public User gettingSeller() {
+		
+		try {
+
+			Session session=sessionFactory.getCurrentSession();
+			Query query=session.createQuery("from com.project.model.User where role='Seller'");
+			
+				List<User>list=query.list();	
+			
+			if(list.size()!=0)
+			{
+				
+				return list.get(0);
+	
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+		return null;
+	}
+		
+	}
+	
 
 	
 
