@@ -20,6 +20,26 @@ body {
 
 </head>
 <body>
+
+<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+  <ul class="navbar-nav">
+   <li class="nav-item active">
+      <a class="nav-link" href="">Purchase Order</a>
+    </li>
+    <li class="nav-item active">
+      <a class="nav-link" href="">Home</a>
+    </li>
+    <li class="nav-item active">
+      <a class="nav-link" href="getRegisterForm">Register</a>
+    </li>
+    <li class="nav-item active">
+      <a class="nav-link" href="getLoginForm">LogIn</a>
+    </li>
+    
+    
+   
+  </ul>
+</nav>
     <div id="login" >
         <h3 class="text-center text-white pt-5">Login form</h3>
         <div class="container">

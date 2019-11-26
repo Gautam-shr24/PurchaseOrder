@@ -9,7 +9,6 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Raise Purchase Order</title>
-<meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
@@ -51,7 +50,7 @@
         });
         
         var purchaseOrderList = [];
-        $("#purchaseOrder").click(function() {
+        $("#purchaseOrder").click(function() {    //raise po button id
         	console.log('Hello 1');
         	var table = $("table tbody");
         	console.log('Hello 2');
@@ -63,9 +62,7 @@
         	            pId = $tds.eq(1).text(),
         	            Quantity = $tds.eq(3).text();
         	        
-        	        // do something with productId, product, Quantity
-        	        
-        	        
+        	        // do something with productId, product, Quantity   
         	        
         	        var myObj = {
         	        		  productId: pId,
@@ -79,16 +76,17 @@
          
         $.ajax({
             type: "POST",
-            url: "/PurchaseOrderUI/purchaseOrder",
+            url: "purchaseOrder",    //controller url pattern
             data: JSON.stringify(purchaseOrderList),
             contentType: "application/json; charset=utf-8",
-            dataType: "json",
+            dataType: "text",
             success: function(data){
-                console.log(data);
+                alert('Purchase Order has been raised succesfully..');
+                location.reload();
            },
             error: function(err) {
-                console.log(err); 
-            }
+/*                 console.log(err); 
+ */            }
         });
 	});
        
@@ -100,24 +98,50 @@
 </head>
 <body>
 
+<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+  <ul class="navbar-nav">
+   <li class="nav-item active">
+      <a class="nav-link" href="">Purchase Order</a>
+    </li>
+    <li class="nav-item active">
+      <a class="nav-link" href="home">Home</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="getPurchaseOrderForm">Raise PO</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="#">Reports</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link disabled" href="#">More</a>
+    </li>
+    <li class="nav-item">
+    <a class="nav-link" href="logout">LogOut</a>
+	</li>
+  </ul>
+</nav>
+</br>
+</br>
+
 	<div class="container">
 	
 <h1 style="color: green;">Raise Purchase Order</h1>
- 		<form action="purchaseOrder" method="post">
- 	<select class="form-control name" name="items">
-						<option value="">Select your products</option>
+ 		</br><form>
+ 			
+ 			<select class="form-control name" name="items">
+					<option value="">Select your products</option>
 						<c:forEach items="${productDetails}" var="pObj">
-						<option value="${pObj.productId} "> 
+							<option value="${pObj.productId} "> 
 							${pObj.productName} 
-						</option>
+							</option>
 						</c:forEach>
-						</select>
-						<input type="number" min="0" pattern="\d*"  class="form-control" placeholder="Quantity" id="quantity" required/>
+			</select>
+						<input type="number" min="0" pattern="\d*"  class="form-control" placeholder="Quantity" id="quantity" required/></br>
 						<input type="button" value="Add" class="btn btn-success add-row" />
 
+				</br>
 
-
-		    <table class="table-responsive table-dark table table-hover">
+		    </br><table class="table-responsive table-dark table table-hover">
         <thead>
             <tr>
                 <th>Select</th>
@@ -129,12 +153,12 @@
         <tbody>
         
         </tbody>
-  </table>
+ 		 </table>
 			<div class="row">
 			<div class="col">	
 			<button type="button" class="delete-row">Delete Row</button>
 			</div>		
-			<div class="col"><input type="submit" value="Raise PO" class="btn btn-primary" id="purchaseOrder"/></div>
+			<div class="col"><input type="button" value="Raise PO" class="btn btn-primary" id="purchaseOrder"/></div>
 		</div>
 
 	
@@ -146,65 +170,3 @@
 
 
 
-
-
-
-<%-- <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1" isELIgnored="false"%>
-<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-
-
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>PO page</title>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet"
-	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-<script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-<script
-	src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
-<script
-	src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-</head>
-<body>
-	<div class="container">
-		<h1 style="color: green;">Raise PUrchase Order</h1>
-		<table class="table table-borderless  table table-hover table-dark">
-			<thead>
-				<tr>
-					<th>select the Items</th>
-					<th>select the Quantity</th>
-
-				</tr>
-			</thead>
-			<tbody>
-				<tr>
-					<td>
-						<select class="form-control">
-						<option>Select your products</option>
-						<c:forEach items="${productDetails}" var="obj">
-						<option> 
-						${obj.productName} 
-						</option>
-						</c:forEach>
-						</select>
-						
-						</td>
-					<td><input type="number" min="0" pattern="\d*"  class="form-control" placeholder="Quantity" required/></td>
-
-				</tr>
-				<tr>
-					<td></td>
-					<td></td>
-					<td><input type="submit" value="submit"	class="btn btn-primary" /></td>
-				</tr>
-
-			</tbody>
-		</table>
-	</div>
-	</body>
-</html> --%>

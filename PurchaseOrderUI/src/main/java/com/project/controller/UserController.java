@@ -85,7 +85,7 @@ public class UserController {
 			
 			else
 			{
-				return "Success";
+				return "SellerPage";
 			}
 		}
 	}

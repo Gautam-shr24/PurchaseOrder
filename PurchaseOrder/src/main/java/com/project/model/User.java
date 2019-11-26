@@ -14,7 +14,9 @@ import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 
 import org.hibernate.validator.constraints.Email;
+import org.springframework.stereotype.Component;
 
+@Component
 @Entity
 @Table(name="Table_User")
 public class User {
@@ -26,7 +28,7 @@ public class User {
 	private int  userId;
 	
 	@Column(name="User_Name")
-	@Pattern(regexp="[^0-9]*")
+	@Pattern(regexp="[^0-9]*", message="Enter valid name")
 	@NotNull
 	private String userName;
 	

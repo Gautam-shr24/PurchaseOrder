@@ -7,11 +7,13 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.project.dao.UserDao;
 import com.project.model.User;
 
 @Repository("userDao")
+@Transactional
 public class UserDaoImpl implements UserDao {
 
 	@Autowired
@@ -58,7 +60,7 @@ public class UserDaoImpl implements UserDao {
 		try {
 
 			Session session=sessionFactory.getCurrentSession();
-			Query query=session.createQuery("from com.project.model.User where role='Seller'");
+			Query query=session.createQuery("from com.project.model.User where user_role='Seller'");
 			
 				List<User>list=query.list();	
 			

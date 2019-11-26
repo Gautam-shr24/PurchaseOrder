@@ -10,6 +10,9 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 
+import org.springframework.stereotype.Component;
+
+@Component
 @Entity
 @Table(name="PO_Items")
 public class POItems {
@@ -75,7 +78,7 @@ public class POItems {
 	@Override
 	public String toString() {
 		return "POItems [purchaseOrderItemId=" + purchaseOrderItemId + ", productObj=" + productObj + ", quantity="
-				+ quantity + ", purchaseOrderObj=" + purchaseOrderObj + ", productId=" + productId + "]";
+				+ quantity + ", productId=" + productId + "]";
 	}
 
 	

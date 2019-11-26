@@ -58,25 +58,28 @@ public class POController {
 	@Autowired
 	PurchaseOrderDao poDao;
 	
+	
+	
+	@ResponseBody
 	@RequestMapping(value="/purchaseOrder",method=RequestMethod.POST)
 	public String raisePurchaseOrder(@RequestBody List<POItems> poItemsList,ModelMap map) {
 		User userObj=(User)session.getAttribute("uObj");
-		System.out.println("i m in");
+		//System.out.println("i m in");
 		PurchaseOrder poObj=new PurchaseOrder();
 		poObj.setBuyerObj(userObj);
 		poObj.setSellerObj(userDao.gettingSeller());
-	
+		poObj.setStatus("Sent to Seller");
 		
-		System.out.println("i m in again"+poObj);
+		//System.out.println("i m in again"+poObj);
 		for(POItems obj:poItemsList) {
 			obj.setProductObj(productDao.getProductById(obj.getProductId()));
 			obj.setPurchaseOrderObj(poObj);
 		}
-		System.out.println("i m in agauin.....");
+		//System.out.println("i m in agauin.....");
 		poObj.setPoItemsObj(poItemsList);
-		System.out.println("hello there"+poObj);
+		//System.out.println("hello there"+poObj);
 				
-		System.out.println("Purchase Order : "+poObj);
+		//System.out.println("Purchase Order : "+poObj);
 		
 		
 		poDao.addPO(poObj);
@@ -94,4 +97,25 @@ public class POController {
 		Product pObj=productDao.getProductById(productId);
 		return pObj;
 	}
+	
+	/*@RequestMapping(value = "/viewPOS", method = RequestMethod.GET)
+	public String viewAllPo(ModelMap map) {
+		return "ViewPOtoseller";
+
+	}
+	*/
+
+	@RequestMapping(value="viewPOS",method=RequestMethod.GET)
+	public String getAllUsers(ModelMap map,@RequestParam(required=false) String msg)
+	{
+		
+		List<PurchaseOrder> list = poDao.viewAllOrders();
+		map.addAttribute("list", list);
+		session.setAttribute("list",list);
+		return "ViewPOtoseller";
+		
+	}
+	
+	
+	
 }
